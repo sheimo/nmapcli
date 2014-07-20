@@ -8,10 +8,13 @@ subprocess.call('clear', shell=True)
 
 colorgrn = "\033[1;36m{0}\033[00m"
 
-print colorgrn.format("\r\n      *************************")	
-print colorgrn.format("      *   Nmap Quick CLI      *")
-print colorgrn.format("      *   By: Sheimo          *")
-print colorgrn.format("      *************************\r\n")
+print colorgrn.format("\r\n      XX*************************XX")
+print colorgrn.format("      XX*************************XX")	
+print colorgrn.format("    **       Nmap Quick CLI        **")
+print colorgrn.format("    **     Created By: Sheimo      **")
+print colorgrn.format("    **         Version:1.0         **")
+print colorgrn.format("      XX*************************XX")
+print colorgrn.format("      XX*************************XX\r\n")
 
 remoteServer = raw_input("Enter remote host(s) to scan in Nmap format: ")
 
