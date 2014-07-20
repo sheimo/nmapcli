@@ -17,6 +17,9 @@ print colorgrn.format("      XX*************************XX")
 print colorgrn.format("      XX*************************XX\r\n")
 
 remoteServer = raw_input("Enter remote host(s) to scan in Nmap format: ")
+xmloutput = raw_input("Do you want to export to XML file? [yes|no]: ")
+if xmloutput == "yes"
+
 
 ans=True
 while ans:
@@ -28,9 +31,9 @@ while ans:
     5.Intense Scan, No Ping (Scans TCP ports with version detection and does not ping host(s))
     6.Ping Scan (Scans host(s) with ping scan)
     7.Regular Scan (Default nmap scan )
-    8.Slow Comprehensive Scan (!Description of what scan does)
+    8.Slow Comprehensive Scan (A slower scan to grab more accurate information on host(s))
     9.Idle/Zombie Scan (Scans host(s) through an idle machine on the network)
-    10. Vunerability Scripts Scan (Loads all vulnerability scripts and scans host(s))
+    10. Vulnerability Scripts Scan (Loads all vulnerability scripts and scans host(s))
     99.Exit/Quit
     """)
     ans=raw_input("What would you like to do? ") 
@@ -86,7 +89,7 @@ while ans:
       output10 = p10.communicate()[0]
       print output10 
     elif ans=="99":
-      print("\n Goodbye") 
+      print("\n Thanks for checking out my script!") 
       sys.exit()
     elif ans !="":
       print("\n Not Valid Choice Try again") 
