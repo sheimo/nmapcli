@@ -12,7 +12,7 @@ print colorgrn.format("\r\n      XX*************************XX")
 print colorgrn.format("      XX*************************XX")	
 print colorgrn.format("    **       Nmap Quick CLI        **")
 print colorgrn.format("    **     Created By: Sheimo      **")
-print colorgrn.format("    **         Version:1.0         **")
+print colorgrn.format("    **         Version:1.1         **")
 print colorgrn.format("      XX*************************XX")
 print colorgrn.format("      XX*************************XX\r\n")
 
@@ -35,53 +35,53 @@ while ans:
     """)
     ans=raw_input("What would you like to do? ") 
     if ans=="1": 
-     p1 = subprocess.Popen(['nmap', '-T4', '-A', '-v', remoteServer], stdout=subprocess.PIPE) 
+     p1 = subprocess.Popen(['nmap', '-T4', '-A', '-v', remoteServer], stdout=sys.stdout, stderr=sys.stderr) 
      print ("Scanning %s with Intense Scan please be patient...") % remoteServer
      output = p1.communicate()[0]
      print output
     elif ans=="2":
-      p2 = subprocess.Popen(['nmap', '-sS', '-sU', '-T4', '-A', '-v', remoteServer], stdout=subprocess.PIPE)
+      p2 = subprocess.Popen(['nmap', '-sS', '-sU', '-T4', '-A', '-v', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
       print ("Scanning %s with Intense Scan Plus UDP ports please be patient...") % remoteServer
       output2 = p2.communicate()[0]
       print output2
     elif ans=="3":
-      p3 = subprocess.Popen(['nmap', '-T4', '-F', remoteServer], stdout=subprocess.PIPE)
+      p3 = subprocess.Popen(['nmap', '-T4', '-F', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
       print ("Scanning %s with Fast Scan please be patient...") % remoteServer
       output3 = p3.communicate()[0]
       print output3 
     elif ans=="4":
-      p4 = subprocess.Popen(['nmap', '-p 1-65535', '-T4', '-A', '-v', remoteServer], stdout=subprocess.PIPE)
+      p4 = subprocess.Popen(['nmap', '-p 1-65535', '-T4', '-A', '-v', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
       print ("Scanning %s with Intense Scan, All TCP Ports please be patient this scan can take awhile...") % remoteServer
       output4 = p4.communicate()[0]
       print output4 
     elif ans=="5":
-      p5 = subprocess.Popen(['nmap', '-p 1-65535', '-T4', '-A', '-v', remoteServer], stdout=subprocess.PIPE)
+      p5 = subprocess.Popen(['nmap', '-p 1-65535', '-T4', '-A', '-v', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
       print ("Scanning %s with Intense Scan, No Ping please be patient...") % remoteServer
       output5 = p5.communicate()[0]
       print output5 
     elif ans=="6":
-      p6 = subprocess.Popen(['nmap', '-sn', remoteServer], stdout=subprocess.PIPE)
+      p6 = subprocess.Popen(['nmap', '-sn', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
       print ("Scanning %s with Ping Scan please be patient...") % remoteServer
       output6 = p6.communicate()[0]
       print output6 
     elif ans=="7":
-      p7 = subprocess.Popen(['nmap', remoteServer], stdout=subprocess.PIPE)
+      p7 = subprocess.Popen(['nmap', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
       print ("Scanning %s with Regular Scan please be patient...") % remoteServer
       output7 = p7.communicate()[0]
       print output7 
     elif ans=="8":
-      p8 = subprocess.Popen(['nmap', '-sS', '-sU', '-T4', '-A', '-v', '-PE', '-PP', '-PS80,443', '-PA3389', '-PU40125', '-PY', '-g 53', '--script', "default or (discovery and safe)", remoteServer], stdout=subprocess.PIPE)
+      p8 = subprocess.Popen(['nmap', '-sS', '-sU', '-T4', '-A', '-v', '-PE', '-PP', '-PS80,443', '-PA3389', '-PU40125', '-PY', '-g 53', '--script', "default or (discovery and safe)", remoteServer], stdout=sys.stdout, stderr=sys.stderr)
       print ("Scanning %s with Slow Comprehensive Scan please be patient this scan can take awhile...") % remoteServer
       output8 = p8.communicate()[0]
       print output8 
     elif ans=="9":
       zombie = raw_input("Please enter Zombie machine address:")
-      p9 = subprocess.Popen(['nmap', '-Pn', '-sI', remoteServer, zombie], stdout=subprocess.PIPE)
+      p9 = subprocess.Popen(['nmap', '-Pn', '-sI', remoteServer, zombie], stdout=sys.stdout, stderr=sys.stderr)
       print ("Scanning %s with Idle/Zombie scan please be patient...") % remoteServer
       output9 = p9.communicate()[0]
       print output9
     elif ans=="10":
-      p10 = subprocess.Popen(['nmap', '--script vuln', remoteServer], stdout=subprocess.PIPE)
+      p10 = subprocess.Popen(['nmap', '--script vuln', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
       print ("Scanning %s with Vulnerability Script Scan please be patient...") % remoteServer
       output10 = p10.communicate()[0]
       print output10 
