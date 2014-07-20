@@ -4,10 +4,13 @@ nmapcli is a tool with pre defined scan templates to automate Nmap scans.  I'm g
 
 Usage: ./nmapcli.py
 
-      *************************
-      *   Nmap Quick CLI      *
-      *   By: Sheimo          *
-      *************************
+      XX*************************XX
+      XX*************************XX
+    **       Nmap Quick CLI        **
+    **     Created By: Sheimo      **
+    **         Version:1.1         **
+      XX*************************XX
+      XX*************************XX
 
 Enter remote host(s) to scan in Nmap format: 192.168.1.5
 
@@ -18,10 +21,9 @@ Enter remote host(s) to scan in Nmap format: 192.168.1.5
     5.Intense Scan, No Ping (Scans TCP ports with version detection and does not ping host(s))
     6.Ping Scan (Scans host(s) with ping scan)
     7.Regular Scan (Default nmap scan )
-    8.Slow Comprehensive Scan (!Description of what scan does)
+    8.Slow Comprehensive Scan (A slower scan to grab more accurate information on host(s))
     9.Idle/Zombie Scan (Scans host(s) through an idle machine on the network)
-    10. Vunerability Scripts Scan (Loads all vulnerability scripts and scans host(s))
+    10. Vulnerability Scripts Scan (Loads all vulnerability scripts and scans host(s))
     99.Exit/Quit
     
 What would you like to do? 
-
