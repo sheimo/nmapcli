@@ -3,6 +3,8 @@
 
 import subprocess
 import sys
+import socket
+
 
 
 subprocess.call('clear', shell=True)
@@ -11,6 +13,8 @@ print "\r\n      *************************"
 print "      *   Nmap Quick CLI      *"
 print "      *   By: Sheimo          *"
 print "      *************************\r\n"
+
+socket.gethostbyname(socket.gethostname())
 
 remoteServer = raw_input("Enter remote host(s) to scan in Nmap format: ")
 
@@ -26,7 +30,8 @@ while ans:
     6.Ping scan (!Description of what scan does)
     7.Regular scan (!Description of what scan does)
     8.Slow comprehensive scan (!Description of what scan does)
-    9.Exit/Quit
+    9.Idle/Zombie scan
+    99.Exit/Quit
     """)
     ans=raw_input("What would you like to do? ") 
     if ans=="1": 
@@ -70,6 +75,12 @@ while ans:
       output8 = p8.communicate()[0]
       print output8 
     elif ans=="9":
+      zombie = raw_input("Please enter Zombie machine address:")
+      p9 = subprocess.Popen(['nmap', '-Pn', '-sI', remoteServer, zombie], stdout=subprocess.PIPE)
+      print ("Scanning %s be patient foo") % remoteServer
+      output9 = p9.communicate()[0]
+      print output9
+    elif ans=="99":
       print("\n Goodbye") 
       sys.exit()
     elif ans !="":
