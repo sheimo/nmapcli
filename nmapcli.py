@@ -17,8 +17,7 @@ print colorgrn.format("      XX*************************XX")
 print colorgrn.format("      XX*************************XX\r\n")
 
 remoteServer = raw_input("Enter remote host(s) to scan in Nmap format: ")
-xmloutput = raw_input("Do you want to export to XML file? [yes|no]: ")
-if xmloutput == "yes"
+
 
 
 ans=True
