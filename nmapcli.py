@@ -148,17 +148,16 @@ while ans:
     if ans=="10":
      xmloutput = raw_input("Save scan in XML format? [yes|no]:")
      if xmloutput == "yes":
-      p10 = subprocess.Popen(['nmap', '--script', 'vuln', '-oX', 'nmap_scan-%T-%D.xml', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
+      p10 = subprocess.Popen(['nmap', '-v', '-oX', 'nmap_scan-%T-%D.xml', '--script', 'vuln', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
       print ("Scanning %s with Vulnerability Script Scan please be patient...") % remoteServer
       output10 = p10.communicate()[0]
       print output10 
      if xmloutput == "no":
-      p10 = subprocess.Popen(['nmap', '--script', 'vuln', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
+      p10 = subprocess.Popen(['nmap', '-v', '--script', 'vuln', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
       print ("Scanning %s with Vulnerability Script Scan please be patient...") % remoteServer
       output10 = p10.communicate()[0]
       print output10 
     if ans=="99":
       print("\n Thanks for checking out my script!") 
       sys.exit()
-    else:
-      print("\n Not Valid Choice Try again") 
+ 
