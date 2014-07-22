@@ -33,6 +33,7 @@ while ans:
     8.Slow Comprehensive Scan (A slower scan to grab more accurate information on host(s))
     9.Idle/Zombie Scan (Scans host(s) through an idle machine on the network)
     10. Vulnerability Scripts Scan (Loads all vulnerability scripts and scans host(s))
+    11. Top Ports Scan (Scans most popular ports on the given host(s))
     99.Exit/Quit
     """)
     ans=raw_input("What would you like to do? ") 
@@ -157,6 +158,18 @@ while ans:
       print colorgrn.format("Scanning %s with Vulnerability Script Scan please be patient...") % remoteServer
       output10 = p10.communicate()[0]
       print output10 
+    if ans=="11":
+     xmloutput = raw_input("Save scan in XML format? [yes|no]:")
+     if xmloutput == "yes":
+      p11 = subprocess.Popen(['nmap', '--top-ports', '1000', '-v', '-oX', 'nmap_scan-%T-%D.xml', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
+      print colorgrn.format("Scanning %s with Top Ports Scan please be patient...") % remoteServer
+      output11 = p11.communicate()[0]
+      print output11 
+     if xmloutput == "no":
+      p11 = subprocess.Popen(['nmap', '--top-ports', '1000', '-v', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
+      print colorgrn.format("Scanning %s with Top Ports Scan please be patient...") % remoteServer
+      output11 = p11.communicate()[0]
+      print output11 
     if ans=="99":
       print("\n Thanks for checking out my script!") 
       sys.exit()
