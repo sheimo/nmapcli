@@ -32,8 +32,8 @@ while ans:
     7.Regular Scan (Default nmap scan )
     8.Slow Comprehensive Scan (A slower scan to grab more accurate information on host(s))
     9.Idle/Zombie Scan (Scans host(s) through an idle machine on the network)
-    10. Vulnerability Scripts Scan (Loads all vulnerability scripts and scans host(s))
-    11. Top Ports Scan (Scans most popular ports on the given host(s))
+    10.Vulnerability Scripts Scan (Loads all vulnerability scripts and scans host(s))
+    11.Top Ports Scan (Scans most popular ports on the given host(s))
     99.Exit/Quit
     """)
     ans=raw_input("What would you like to do? ") 
