@@ -1,6 +1,6 @@
 Update 8/7/2014  
 
-I'm going to start putting thses into different categories such as Zenmap templates, firewall scans, script scans etc.  Email me if you have any creative scans to add.
+I'm going to start putting these into different categories such as Zenmap templates, firewall scans, script scans etc.  Email me if you have any creative scans to add.
 
 Thanks
 
