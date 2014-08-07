@@ -1,3 +1,9 @@
+Update 8/7/2014  
+
+I'm going to start putting thses into different categories such as Zenmap templates, firewall scans, script scans etc.  Email me if you have any creative scans to add.
+
+Thanks
+
 Nmap Command Line Interface
 =======
 nmapcli is a tool with pre defined scan templates to automate Nmap scans.  I'm going to keep adding new scan types all the time.
