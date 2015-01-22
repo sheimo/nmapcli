@@ -1,8 +1,23 @@
 #!/usr/bin/env python
 
-
 import subprocess
 import sys
+import os
+import time
+
+subprocess.call('clear', shell=True)
+
+nmap_check="/usr/bin/nmap"
+ 
+if ( not os.path.isfile(nmap_check)):
+    print("Nmap is not installed, please visit http://nmap.org/download.html")
+    sys.exit()
+else:
+    print("Nmap Found! Please upgrade if you have a version lower than 5.30")
+
+subprocess.Popen(['nmap', '--version'], stdout=sys.stdout, stderr=sys.stderr)
+
+time.sleep(5)
 
 subprocess.call('clear', shell=True)
 
@@ -14,28 +29,35 @@ print colorgrn.format("    **       Nmap Quick CLI        **")
 print colorgrn.format("    **     Created By: Sheimo      **")
 print colorgrn.format("    **    RedTeam Security Labs    **")
 print colorgrn.format("    **   redteamsecure.com/labs    **")
-print colorgrn.format("    **         Version:1.1         **")
+print colorgrn.format("    **         Version:1.2         **")
 print colorgrn.format("      XX*************************XX")
 print colorgrn.format("      XX*************************XX\r\n")
 
 remoteServer = raw_input("Enter remote host(s) to scan in Nmap format: ")
 
-
-
 ans=True
 while ans:
-    print ("""
+    print ("""\n[+] Zenmap Scans
     1.Intense Scan (Scans common TCP ports with version detection)
     2.Intense Scan Plus UDP (Scans common TCP + UDP ports with version detection)
-    3.Fast Scan (Scans host(s) with fewer ports than regular scan)
+    3.Fast Scan (Scans host with fewer ports than regular scan)
     4.Intense Scan, All TCP Ports (Scans all TCP ports with version detection)
-    5.Intense Scan, No Ping (Scans TCP ports with version detection and does not ping host(s))
-    6.Ping Scan (Scans host(s) with ping scan)
+    5.Intense Scan, No Ping (Scans TCP ports with version detection and does not ping host)
+    6.Ping Scan (Scans host with ping scan)
     7.Regular Scan (Default nmap scan )
-    8.Slow Comprehensive Scan (A slower scan to grab more accurate information on host(s))
-    9.Idle/Zombie Scan (Scans host(s) through an idle machine on the network)
-    10.Vulnerability Scripts Scan (Loads all vulnerability scripts and scans host(s))
-    11.Top Ports Scan (Scans most popular ports on the given host(s))
+    8.Slow Comprehensive Scan (A slower scan to grab more accurate information on host)
+
+[+] Firewall/Evasion Scans
+    9.Idle/Zombie Scan (Scans host through an idle machine on the network)
+    10.Fragment Scan (Fragment packet scan to attempt to bypass packet inspection firewalls)
+    11.Append Random Data Scan (Scans host with additional data to avoid detection)
+    12.MAC Address Spoof Scan (Scans host with a random MAC address)
+    13.Bad Checksum Scan (Scans host with incorrect checksums)
+    14.Decoy Scan (Scans host with random decoys)
+
+[+] Nmap Scipt Scans 
+    Coming Soon!
+   
     99.Exit/Quit
     """)
     ans=raw_input("What would you like to do? ") 
@@ -90,12 +112,12 @@ while ans:
     if ans=="5":
      xmloutput = raw_input("Save scan in XML format? [yes|no]:")
      if xmloutput == "yes":
-      p5 = subprocess.Popen(['nmap', '-p 1-65535', '-T4', '-A', '-v', '-oX', 'nmap_scan-%T-%D.xml', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
+      p5 = subprocess.Popen(['nmap', '-p 1-65535', '-T4', '-A', '-v', '-Pn', '-oX', 'nmap_scan-%T-%D.xml', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
       print colorgrn.format("Scanning %s with Intense Scan, No Ping please be patient...") % remoteServer
       output5 = p5.communicate()[0]
       print output5 
      if xmloutput == "no":
-      p5 = subprocess.Popen(['nmap', '-p 1-65535', '-T4', '-A', '-v', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
+      p5 = subprocess.Popen(['nmap', '-p 1-65535', '-T4', '-A', '-v', '-Pn', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
       print colorgrn.format("Scanning %s with Intense Scan, No Ping please be patient...") % remoteServer
       output5 = p5.communicate()[0]
       print output5 
@@ -151,27 +173,63 @@ while ans:
     if ans=="10":
      xmloutput = raw_input("Save scan in XML format? [yes|no]:")
      if xmloutput == "yes":
-      p10 = subprocess.Popen(['nmap', '-v', '-oX', 'nmap_scan-%T-%D.xml', '--script', 'vuln', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
-      print colorgrn.format("Scanning %s with Vulnerability Script Scan please be patient...") % remoteServer
+      p10 = subprocess.Popen(['nmap', '-v', '-f' '-oX', 'nmap_scan-%T-%D.xml',  remoteServer], stdout=sys.stdout, stderr=sys.stderr)
+      print colorgrn.format("Scanning %s with Fragment Scan please be patient...") % remoteServer
       output10 = p10.communicate()[0]
       print output10 
      if xmloutput == "no":
-      p10 = subprocess.Popen(['nmap', '-v', '--script', 'vuln', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
-      print colorgrn.format("Scanning %s with Vulnerability Script Scan please be patient...") % remoteServer
+      p10 = subprocess.Popen(['nmap', '-v', '-f', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
+      print colorgrn.format("Scanning %s with Fragment Scan please be patient...") % remoteServer
       output10 = p10.communicate()[0]
       print output10 
     if ans=="11":
      xmloutput = raw_input("Save scan in XML format? [yes|no]:")
      if xmloutput == "yes":
-      p11 = subprocess.Popen(['nmap', '--top-ports', '1000', '-v', '-oX', 'nmap_scan-%T-%D.xml', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
-      print colorgrn.format("Scanning %s with Top Ports Scan please be patient...") % remoteServer
+      p11 = subprocess.Popen(['nmap', '--data-length', '30', '-v', '-oX', 'nmap_scan-%T-%D.xml', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
+      print colorgrn.format("Scanning %s with Append Random Data Scan please be patient...") % remoteServer
       output11 = p11.communicate()[0]
       print output11 
      if xmloutput == "no":
-      p11 = subprocess.Popen(['nmap', '--top-ports', '1000', '-v', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
-      print colorgrn.format("Scanning %s with Top Ports Scan please be patient...") % remoteServer
+      p11 = subprocess.Popen(['nmap', '--data-length', '30', '-v', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
+      print colorgrn.format("Scanning %s with Append Random Data Scan please be patient...") % remoteServer
       output11 = p11.communicate()[0]
       print output11 
+    if ans=="12":
+     xmloutput = raw_input("Save scan in XML format? [yes|no]:")
+     if xmloutput == "yes":
+      p12 = subprocess.Popen(['nmap', '--spoof-mac', '0', '-v', '-oX', 'nmap_scan-%T-%D.xml', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
+      print colorgrn.format("Scanning %s with MAC Address Spoof Scan please be patient...") % remoteServer
+      output12 = p12.communicate()[0]
+      print output12 
+     if xmloutput == "no":
+      p12 = subprocess.Popen(['nmap', '--spoof-mac', '0', '-v', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
+      print colorgrn.format("Scanning %s with MAC Address Spoof Scan please be patient...") % remoteServer
+      output12 = p12.communicate()[0]
+      print output12 
+    if ans=="13":
+     xmloutput = raw_input("Save scan in XML format? [yes|no]:")
+     if xmloutput == "yes":
+      p13 = subprocess.Popen(['nmap', '--badsum', '-v', '-oX', 'nmap_scan-%T-%D.xml', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
+      print colorgrn.format("Scanning %s with Bad Checksum Scan please be patient...") % remoteServer
+      output13 = p13.communicate()[0]
+      print output13 
+     if xmloutput == "no":
+      p13 = subprocess.Popen(['nmap', '--badsum', '-v', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
+      print colorgrn.format("Scanning %s with Bad Checksum Scan please be patient...") % remoteServer
+      output13 = p13.communicate()[0]
+      print output13 
+    if ans=="14":
+     xmloutput = raw_input("Save scan in XML format? [yes|no]:")
+     if xmloutput == "yes":
+      p14 = subprocess.Popen(['nmap', '-D', 'RND:10', 'v', '-oX', 'nmap_scan-%T-%D.xml', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
+      print colorgrn.format("Scanning %s with Decoy Scan please be patient...") % remoteServer
+      output14 = p14.communicate()[0]
+      print output14 
+     if xmloutput == "no":
+      p14 = subprocess.Popen(['nmap', '-D', 'RND:10', '-v', remoteServer], stdout=sys.stdout, stderr=sys.stderr)
+      print colorgrn.format("Scanning %s with Decoy Scan please be patient...") % remoteServer
+      output14 = p14.communicate()[0]
+      print output14 
     if ans=="99":
       print("\n Thanks for checking out my script!") 
       sys.exit()
