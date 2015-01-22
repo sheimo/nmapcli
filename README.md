@@ -44,4 +44,5 @@ Enter remote host(s) to scan in Nmap format: 192.168.1.1
    
     99.Exit/Quit
     
+    
 What would you like to do? 
