@@ -13,8 +13,7 @@ Usage: ./nmapcli.py
       XX*************************XX
     **       Nmap Quick CLI        **
     **     Created By: Sheimo      **
-    **    RedTeam Security Labs    **
-    **   redteamsecure.com/labs    **
+    **                             **
     **         Version:1.2         **
       XX*************************XX
       XX*************************XX
