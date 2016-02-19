@@ -55,7 +55,7 @@ while ans:
     13.Bad Checksum Scan (Scans host with incorrect checksums)
     14.Decoy Scan (Scans host with random decoys)
 
-[+] Nmap Scipt Scans 
+[+] Nmap Scipt Scans *(Not even close to being done)*
     15.Address Scan (Shows extra information about IPv6 addresses, such as embedded MAC or IPv4 addresses when available)
     16.AFP Ls Scan (Attempts to get useful information about files from AFP volumes)
     17.AFP Path Vuln Scan (Detects the Mac OS X AFP directory traversal vulnerability, CVE-2010-0533)
