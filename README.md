@@ -1,11 +1,9 @@
 
-Email me if you have any creative scans to add.
 
-Thanks
 
 Nmap Command Line Interface
 =======
-nmapcli is a tool with pre defined scan templates to automate Nmap scans.  I'm going to keep adding new scan types all the time.
+nmapcli is a tool with pre defined scan templates to automate Nmap scans.
 
 Usage: ./nmapcli.py
 
@@ -54,7 +52,7 @@ Enter remote host(s) to scan in Nmap format: 192.168.1.1
 
 [+] Nmap Scipt Scans 
    
-    Coming Soon!
+    Coming Sometime!
    
     99.Exit/Quit
     
