@@ -5,17 +5,45 @@ import sys
 import os
 import time
 
-subprocess.call('clear', shell=True)
+#subprocess.call('clear', shell=True)
 
-nmap_check="/usr/bin/nmap" #Need to do something like apt list --installed check rather.
+def detectNmap():
+	try:
+		nmap_boolean = True
 
+		check_package = subprocess.call("nmap")
+		os.system('clear')
+		print("\tNmap Found!...\n ")
+
+	except OSError as e:
+		cprint("\t[!] Error: Nmap Not found...\n", 'red')
+		nmap_boolean = False
+
+		try:
+			print("\t[*] Intalling it For You...")
+
+			os.system('sudo apt-get install nmap')
+			return detectNmap()
+
+		except:
+			raise
+			nmap_boolean = False
+			return False
+		
+
+	except KeyboardInterrupt:
+		print("\n\t[-] User Aborted! ")
+
+
+
+#nmap_check="/usr/bin/nmap" #Need to do something like apt list --installed check rather.
  
-if ( not os.path.isfile(nmap_check)):
-    print("Nmap is not installed, please visit http://nmap.org/download.html")
-    sys.exit()
-else:
-    print("Nmap Found! Please upgrade if you have a version lower than 5.30")
-
+#if ( not os.path.isfile(nmap_check)):
+#   print("Nmap is not installed, please visit http://nmap.org/download.html")
+#  sys.exit()
+#else:
+#    print("Nmap Found! Please upgrade if you have a version lower than 5.30")
+#
 subprocess.Popen(['nmap', '--version'], stdout=sys.stdout, stderr=sys.stderr)
 
 time.sleep(5)
@@ -24,15 +52,21 @@ subprocess.call('clear', shell=True)
 
 colorgrn = "\033[1;36m{0}\033[00m"
 
-print colorgrn.format("\r\n      XX*************************XX")
-print colorgrn.format("      XX*************************XX")	
-print colorgrn.format("    **          Nmap CLI           **")
-print colorgrn.format("    **     Created By: Sheimo      **")
-print colorgrn.format("    **                             **")
-print colorgrn.format("    **         Version:2.1         **")
-print colorgrn.format("      XX*************************XX")
-print colorgrn.format("      XX*************************XX\r\n")
 
+
+print colorgrn.format("	    )    *             (             (     (     ")
+print colorgrn.format("	 ( /(  (  `     (      )\ )     (    )\ )  )\ )  ")
+print colorgrn.format("	 )\()) )\))(    )\    (()/(     )\  (()/( (()/(  ")
+print colorgrn.format("	((_)\ ((_)()\((((_)(   /(_))  (((_)  /(_)) /(_)) ")
+print colorgrn.format("	 _((_)(_()((_))\ _ )\ (_))    )\___ (_))  (_))   ")
+print colorgrn.format("	| \| ||  \/  |(_)_\(_)| _ \  ((/ __|| |   |_ _|  ")
+print colorgrn.format("	| .` || |\/| | / _ \  |  _/   | (__ | |__  | |   ")
+print colorgrn.format("	|_|\_||_|  |_|/_/ \_\ |_|      \___||____||___|  ")
+print colorgrn.format("							 ")
+print colorgrn.format("			Created By: Sheimo")
+print colorgrn.format("			    Version:2.11")
+print colorgrn.format("")
+                                                 
 remoteServer = raw_input("Enter remote host(s) to scan in Nmap format: ")
 
 ans=True
@@ -570,7 +604,7 @@ while ans:
       output28 = p28.communicate()[0]
       print output28
 
-if ans=="99":
+    if ans=="99":
       print("\n Thanks for checking out my script!\n") 
       sys.exit()
  
